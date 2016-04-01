@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{9D7033A9-759A-C874-5876-A57CDA557B92}") = "GDB4 - the pizza game", "Assembly-CSharp.csproj", "{66235240-8376-F5B8-CDA2-58A6D88C9F3F}"
+EndProject
+Project("{9D7033A9-759A-C874-5876-A57CDA557B92}") = "GDB4 - the pizza game", "Assembly-CSharp-Editor.csproj", "{D9B0A58C-941C-9134-AA67-8EA362E9FFA2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66235240-8376-F5B8-CDA2-58A6D88C9F3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66235240-8376-F5B8-CDA2-58A6D88C9F3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66235240-8376-F5B8-CDA2-58A6D88C9F3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66235240-8376-F5B8-CDA2-58A6D88C9F3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9B0A58C-941C-9134-AA67-8EA362E9FFA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9B0A58C-941C-9134-AA67-8EA362E9FFA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9B0A58C-941C-9134-AA67-8EA362E9FFA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9B0A58C-941C-9134-AA67-8EA362E9FFA2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
