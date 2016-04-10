@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.IO;
+using UnityEngine.UI;
 
 public class TheRealGameManager : MonoBehaviour {
 
@@ -9,10 +12,27 @@ public class TheRealGameManager : MonoBehaviour {
     private Dictionary<string, int> _currentIngredients = new Dictionary<string, int>();
     public PlayerScore playerScore;
 
+	public List<string> PizzaNamePasts;
+	public List<Pizza> pizzaList;
+	public TextMesh currentPizzaText;
+
+	string PizzaMenuLocation = "PizzaMenu.txt";
 	// Use this for initialization
 	void Start () {
-        currentPizza = new Pizza();
+		pizzaList = new List<Pizza> ();
+		for (int i = 0; i < 30; i++) {
+			bool AlreadyExist = true;
+			string pizzaName = "";
+			while (AlreadyExist == true) {
+				pizzaName = GenRandomPizzaName ();
+				AlreadyExist = checkIfNameExist (pizzaName);
+			}
+
+			pizzaList.Add (new Pizza(pizzaName));
+		}
         score = 0;
+		PizzaListToTxt (pizzaList);
+		newPizza ();
 	}
 	
 	// Update is called once per frame
@@ -134,6 +154,65 @@ public class TheRealGameManager : MonoBehaviour {
         score += _currentIngredients["chicken"] -= difference * 2;
 
         playerScore.UpdateScore(score);
-        currentPizza = new Pizza();
+		newPizza ();
+        //currentPizza = new Pizza();
     }
+
+	public void newPizza(){
+		currentPizza = pizzaList [UnityEngine.Random.Range (0, pizzaList.Count)];
+		currentPizzaText.text = currentPizza.Name;
+	}
+
+	public string GenRandomPizzaName(){
+		string output = "";
+		for (int i = 0; i < UnityEngine.Random.Range(1,3); i++) {
+			output += PizzaNamePasts [UnityEngine.Random.Range (0, PizzaNamePasts.Count)] + " ";
+		}
+
+		if (UnityEngine.Random.value < 0.5f) {
+			return "Pizza " + output;
+		}
+		else {
+			return output + "Pizza";
+		}
+	}
+
+	public void PizzaListToTxt(List<Pizza> pizzaList){
+
+
+		if (!File.Exists (PizzaMenuLocation)) {
+			StreamWriter sr = File.CreateText (PizzaMenuLocation);
+			sr.Close ();
+		} else {
+			using (StreamWriter sr = new StreamWriter(PizzaMenuLocation, false))
+			{
+				sr.WriteLine (" ");
+			}
+		}
+
+		foreach (Pizza item in pizzaList) {
+			WriteMenu(item.ToString());
+		}
+	}
+
+	public bool checkIfNameExist(string name){
+		foreach (Pizza item in pizzaList) {
+			if (item.Name == name)
+				return true;
+		}
+
+		return false;
+	}
+
+	public bool WriteMenu(string pizza){
+		bool result = false;
+		using (StreamWriter sr = new StreamWriter(PizzaMenuLocation, true))
+		{
+			sr.WriteLine ("Pizza {0}", pizza);
+			sr.WriteLine (" ");
+			result = true;
+		}
+		return result;
+
+	}
 }

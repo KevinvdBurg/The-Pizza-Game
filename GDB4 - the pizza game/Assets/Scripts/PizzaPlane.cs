@@ -8,10 +8,10 @@ public class PizzaPlane : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		for (int i = 0; i < 5; i++) {
-			Pizza newPizza = new Pizza ();
-			thePizzas.Add (newPizza);
-		}
+//		for (int i = 0; i < 5; i++) {
+//			Pizza newPizza = new Pizza ();
+//			thePizzas.Add (newPizza);
+//		}
 	}
 	
 	// Update is called once per frame

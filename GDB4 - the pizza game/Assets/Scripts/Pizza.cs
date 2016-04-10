@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 public class Pizza {
 
-	public Texture Texture;
+	//public Texture Texture;
 	public Dictionary<string, int> _neededIngredients = new Dictionary<string, int>();
 	public string Name;
-	// Use this for initialization
+// Use this for initialization
 //	void Start () {
 //		createIngredientList ();
 //	}
@@ -17,8 +17,8 @@ public class Pizza {
 //		
 //	}
 
-	public Pizza(){
-		Name = GenPizzaName ();
+	public Pizza(string Name){
+		this.Name = Name;
 		createIngredientList ();
 	}
 
@@ -57,7 +57,7 @@ public class Pizza {
 				if (!_neededIngredients.ContainsKey(ingredientName))  {
                     int r = Random.Range(1, 6);
 					_neededIngredients.Add(ingredientName, r);
-                    Debug.Log(ingredientName + ": " + r);
+                    //Debug.Log(ingredientName + ": " + r);
 					foundIngredient = true;
 				}
 			}
@@ -65,35 +65,44 @@ public class Pizza {
 
 
 	}
-
-	public string GenPizzaName (){
-		string pizzaName = "";
-		switch (Random.Range(1,8)) {
-		case 1:
-			pizzaName = "Pizza le Kees";
-			break;
-		case 2:
-			pizzaName = "Pizza Train";
-			break;
-		case 3:
-			pizzaName = "Pizza Pikanto";
-			break;
-		case 4:
-			pizzaName = "Pizza with Stuff";
-			break;
-		case 5:
-			pizzaName = "The Pizza";
-			break;
-		case 6:
-			pizzaName = "Pizza Azzip";
-			break;
-		case 7:
-			pizzaName = "Pizza du Menno";
-			break;
-		case 8:
-			pizzaName = "Kevin's Special Pizza";
-			break;
+	public override string ToString ()
+	{
+		string output = "Name: " + this.Name + " > ";
+		foreach(KeyValuePair<string, int> entry in _neededIngredients)
+		{
+			output += entry.Key + " - " + entry.Value + "     ";
 		}
-        return pizzaName;    
+		return output;
 	}
+
+//	public string GenPizzaName (){
+//		string pizzaName = "";
+//		switch (Random.Range(1,8)) {
+//		case 1:
+//			pizzaName = "Pizza le Kees";
+//			break;
+//		case 2:
+//			pizzaName = "Pizza Train";
+//			break;
+//		case 3:
+//			pizzaName = "Pizza Pikanto";
+//			break;
+//		case 4:
+//			pizzaName = "Pizza with Stuff";
+//			break;
+//		case 5:
+//			pizzaName = "The Pizza";
+//			break;
+//		case 6:
+//			pizzaName = "Pizza Azzip";
+//			break;
+//		case 7:
+//			pizzaName = "Pizza du Menno";
+//			break;
+//		case 8:
+//			pizzaName = "Kevin's Special Pizza";
+//			break;
+//		}
+//        return pizzaName;    
+//	}
 }
