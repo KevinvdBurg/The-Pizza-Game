@@ -20,8 +20,9 @@ public class TheRealGameManager : MonoBehaviour {
 	public List<Pizza> pizzaList;
 	public TextMesh currentPizzaText;
 	public TextMesh ConnectedText;
+	public TextMesh TimeText;
 	public bool isInternet = false;
-
+	public float timerTime;
 	string PizzaMenuLocation = "PizzaMenu.txt";
 
 
@@ -45,10 +46,7 @@ public class TheRealGameManager : MonoBehaviour {
 			SendEmailDesktop ();
 			PizzaListToTxt (pizzaList);
 		}	
-		
-        score = 0;
-
-		newPizza ();
+		currentPizzaText.text = "Game Not Started Yet!";
 	}
 	
 	// Update is called once per frame
@@ -57,13 +55,6 @@ public class TheRealGameManager : MonoBehaviour {
 			newPizza ();
 		}
 
-		StartCoroutine (CheckInternet());
-
-		if (isInternet) {
-			ConnectedText.text = "Connected";
-		} else {
-			ConnectedText.text = "Not Connected";
-		}
 	}
 
     public void OnPizzaClick(GameObject clickedPane)
@@ -285,14 +276,29 @@ public class TheRealGameManager : MonoBehaviour {
 	{
 		return WWW.EscapeURL(url).Replace("+","%20");
 	}
-
-	IEnumerator CheckInternet(){ 
-		WWW internet = new WWW("http://www.google.com"); 
-		yield return internet; 
-		if(internet.error!=null) 
-			isInternet=false; 
-		else
-			isInternet=true; 
 		
-}
+	public void StartGame(){
+		timerTime -= Time.deltaTime;
+		score = 0;
+		newPizza ();
+		StartCoroutine (StartTimer (timerTime));
+	}
+
+	void GameOver(){
+		currentPizzaText.text = "GameOver! Score: " + score;
+		score = 0;
+		//Game over Reset all varibales
+	}
+	IEnumerator StartTimer(float time){
+		time -= Time.deltaTime;
+		TimeText.text = "Time Left:" + Mathf.Round(time);
+		if(time < 0)
+		{
+			GameOver ();
+		}
+
+		yield return null;
+
+	}
+
 }
