@@ -1,61 +1,61 @@
  
-Pizza Name: Pizza Double Wasabi  > Mushroom - 3     Ham - 2     Dough - 5     Olive - 2     
+Pizza Name: Pizza Chicago  > Olive - 1     Mushroom - 3     Dough - 5     
  
-Pizza Name: Azzip Azzip Pizza > Ham - 5     Cheese - 2     Mushroom - 2     Tomato - 4     
+Pizza Name: Pizza Skilful  > Cheese - 3     Salami - 5     Olive - 3     Tomato - 2     
  
-Pizza Name: Pizza la  > Ham - 2     Mushroom - 4     Cheese - 2     Tomato - 4     
+Pizza Name: Pizza Yum  > Ham - 4     Mushroom - 1     Tomato - 2     
  
-Pizza Name: Francescana Lover Pizza > Olive - 5     Salami - 5     Tomato - 3     
+Pizza Name: Cheesy Pizza > Mushroom - 4     Cheese - 5     Salami - 2     Olive - 5     
  
-Pizza Name: Pizza Svedese  > Dough - 3     Olive - 3     Cheese - 1     Tomato - 1     
+Pizza Name: Pizza la Big  > Cheese - 1     Mushroom - 5     Olive - 3     Dough - 4     
  
-Pizza Name: le Pizza > Olive - 4     Ham - 5     Dough - 5     
+Pizza Name: Pizza du Peperoni  > Mushroom - 2     Salami - 2     Olive - 3     
  
-Pizza Name: Pizza Cipolle Chicago  > Dough - 1     Cheese - 3     Mushroom - 4     Ham - 1     
+Pizza Name: Svedese Pizza > Olive - 2     Tomato - 5     Dough - 2     Mushroom - 2     
  
-Pizza Name: Pizza Impressive Dinamite  > Tomato - 4     Olive - 5     Ham - 4     Dough - 2     
+Pizza Name: Pizza Kees Chicago  > Cheese - 1     Tomato - 3     Salami - 2     Mushroom - 5     
  
-Pizza Name: Pizza Peperoni  > Tomato - 4     Ham - 4     Olive - 5     
+Pizza Name: Pizza Student Cipolle  > Dough - 5     Salami - 2     Mushroom - 4     Cheese - 5     
  
-Pizza Name: Azzip Twitter Pizza > Olive - 1     Salami - 3     Ham - 4     Mushroom - 2     
+Pizza Name: Skilful Skilful Pizza > Ham - 5     Tomato - 5     Salami - 4     Mushroom - 2     
  
-Pizza Name: Francescana Pizza > Olive - 3     Tomato - 3     Salami - 4     
+Pizza Name: Pizza Green Mexican  > Ham - 4     Dough - 5     Salami - 1     
  
-Pizza Name: Tasty Pizza > Tomato - 3     Olive - 4     Cheese - 4     
+Pizza Name: Pizza Stagionie Lazy  > Dough - 4     Salami - 3     Olive - 5     
  
-Pizza Name: Pizza New York  > Salami - 3     Ham - 2     Cheese - 4     
+Pizza Name: Pizza Cheese  > Olive - 3     Cheese - 4     Tomato - 3     Salami - 1     
  
-Pizza Name: Pizza Azzip Azzip  > Tomato - 1     Mushroom - 5     Salami - 2     
+Pizza Name: Fantasia Pizza > Cheese - 4     Salami - 1     Dough - 2     Mushroom - 1     
  
-Pizza Name: Pizza Cheesy le  > Tomato - 4     Salami - 2     Olive - 5     Ham - 2     
+Pizza Name: Pizza Kees Jazy  > Salami - 3     Ham - 1     Dough - 4     Tomato - 3     
  
-Pizza Name: Mexican Pizza > Olive - 1     Dough - 5     Mushroom - 3     
+Pizza Name: Pizza Kevin  > Mushroom - 4     Dough - 2     Tomato - 5     Olive - 1     
  
-Pizza Name: Mexican Tasty Pizza > Mushroom - 3     Tomato - 2     Olive - 2     
+Pizza Name: Pizza Facebook du  > Dough - 5     Olive - 3     Cheese - 1     Tomato - 4     
  
-Pizza Name: Pizza Impressive Svedese  > Olive - 2     Mushroom - 1     Cheese - 5     Ham - 4     
+Pizza Name: Pizza Amecian  > Mushroom - 1     Ham - 1     Dough - 4     Salami - 3     
  
-Pizza Name: Pizza Student  > Salami - 1     Olive - 2     Cheese - 5     
+Pizza Name: Fantasia Svedese Pizza > Ham - 4     Salami - 5     Tomato - 5     Olive - 1     
  
-Pizza Name: Pizza Skilful  > Ham - 5     Salami - 5     Olive - 3     Cheese - 5     
+Pizza Name: Pizza Azzip  > Olive - 5     Tomato - 3     Cheese - 2     Mushroom - 3     
  
-Pizza Name: Pizza Wave  > Dough - 1     Cheese - 4     Tomato - 5     
+Pizza Name: Pizza Svedese  > Dough - 5     Cheese - 3     Tomato - 5     Olive - 4     
  
-Pizza Name: Strong Pizza > Tomato - 1     Salami - 2     Mushroom - 5     
+Pizza Name: Pizza Triple  > Dough - 2     Tomato - 4     Mushroom - 5     
  
-Pizza Name: Pizza Big Fantasia  > Salami - 5     Dough - 1     Olive - 2     
+Pizza Name: Pizza Frikandonie York  > Salami - 1     Dough - 1     Cheese - 4     Olive - 2     
  
-Pizza Name: Vulcano Francescana Pizza > Tomato - 5     Ham - 2     Salami - 4     
+Pizza Name: Vulcano Burning Pizza > Cheese - 1     Mushroom - 4     Ham - 3     
  
-Pizza Name: Pizza Green  > Dough - 1     Mushroom - 1     Cheese - 3     Salami - 1     
+Pizza Name: Red Pizza > Olive - 1     Salami - 2     Mushroom - 5     Cheese - 3     
  
-Pizza Name: Special Strong Pizza > Ham - 1     Tomato - 2     Mushroom - 3     
+Pizza Name: Pizza Peperoni  > Salami - 1     Cheese - 4     Mushroom - 4     Dough - 5     
  
-Pizza Name: Amecian Pizza > Olive - 1     Ham - 2     Dough - 4     Mushroom - 3     
+Pizza Name: Lazy Cheesy Pizza > Tomato - 5     Olive - 4     Salami - 2     
  
-Pizza Name: Vulcano Pizza > Olive - 4     Salami - 4     Mushroom - 1     
+Pizza Name: Vegetarian Azzip Pizza > Tomato - 5     Ham - 3     Cheese - 1     Dough - 3     
  
-Pizza Name: Pizza Cheese  > Salami - 2     Dough - 2     Olive - 1     Cheese - 5     
+Pizza Name: Pizza Lover Cipolle  > Dough - 4     Mushroom - 4     Cheese - 2     Ham - 2     
  
-Pizza Name: Cheesy Pizza > Tomato - 1     Mushroom - 4     Dough - 4     Cheese - 4     
+Pizza Name: Pizza du Tasty  > Tomato - 5     Cheese - 2     Dough - 2     
  

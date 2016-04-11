@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System;
 using System.IO;
 using UnityEngine.UI;
+using System.Net.Mail;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
 
 public class TheRealGameManager : MonoBehaviour {
 
@@ -15,10 +19,15 @@ public class TheRealGameManager : MonoBehaviour {
 	public List<string> PizzaNamePasts;
 	public List<Pizza> pizzaList;
 	public TextMesh currentPizzaText;
+	public TextMesh ConnectedText;
+	public bool isInternet = false;
 
 	string PizzaMenuLocation = "PizzaMenu.txt";
+
+
 	// Use this for initialization
-	void Start () {
+	void Start () {	
+		currentPizzaText.text = "void Start ()";
 		pizzaList = new List<Pizza> ();
 		for (int i = 0; i < 30; i++) {
 			bool AlreadyExist = true;
@@ -27,9 +36,10 @@ public class TheRealGameManager : MonoBehaviour {
 				pizzaName = GenRandomPizzaName ();
 				AlreadyExist = checkIfNameExist (pizzaName);
 			}
-
+			currentPizzaText.text = "Pizza Added" + i;
 			pizzaList.Add (new Pizza(pizzaName));
 		}
+		//sendMail ();
         score = 0;
 		PizzaListToTxt (pizzaList);
 		newPizza ();
@@ -37,7 +47,17 @@ public class TheRealGameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (Input.GetKeyUp(KeyCode.F)) {
+			newPizza ();
+		}
+
+		StartCoroutine (CheckInternet());
+
+		if (isInternet) {
+			ConnectedText.text = "Connected";
+		} else {
+			ConnectedText.text = "Not Connected";
+		}
 	}
 
     public void OnPizzaClick(GameObject clickedPane)
@@ -213,6 +233,45 @@ public class TheRealGameManager : MonoBehaviour {
 			result = true;
 		}
 		return result;
-
 	}
+
+	public void sendMail(){
+		currentPizzaText.text = "sendMail()";
+		MailMessage mail = new MailMessage();
+
+		mail.From = new MailAddress("kevintestmail123@gmail.com");
+		mail.To.Add("kevintestmail123@gmail.com");
+		mail.Subject = "Pizza Menu";
+
+		string output = "";
+		foreach (Pizza item in pizzaList) {
+			output += item.ToString ();
+			output += System.Environment.NewLine;
+		}
+		
+		mail.Body = output;
+		currentPizzaText.text = "Created the Body";
+		SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");
+		currentPizzaText.text = "new SmtpClient(\"smtp.gmail.com\");";
+		smtpServer.Port = 587;
+		smtpServer.Credentials = new System.Net.NetworkCredential("kevintestmail123@gmail.com", "KevinsTestAccount") as ICredentialsByHost;
+		currentPizzaText.text = "smtpServer.Credentials";
+		smtpServer.EnableSsl = true;
+		ServicePointManager.ServerCertificateValidationCallback = 
+			delegate(object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) 
+		{ return true; };
+		smtpServer.Send(mail);
+		currentPizzaText.text = "smtpServer.Send(mail);";
+		//Debug.Log("success");
+	}
+
+	IEnumerator CheckInternet(){ 
+		WWW internet = new WWW("www.google.com"); 
+		yield return internet; 
+		if(internet.error!=null) 
+			isInternet=false; 
+		else
+			isInternet=true; 
+		
+}
 }
