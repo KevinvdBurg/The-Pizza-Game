@@ -27,7 +27,6 @@ public class TheRealGameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {	
-		currentPizzaText.text = "void Start ()";
 		pizzaList = new List<Pizza> ();
 		for (int i = 0; i < 30; i++) {
 			bool AlreadyExist = true;
@@ -36,12 +35,19 @@ public class TheRealGameManager : MonoBehaviour {
 				pizzaName = GenRandomPizzaName ();
 				AlreadyExist = checkIfNameExist (pizzaName);
 			}
-			currentPizzaText.text = "Pizza Added" + i;
 			pizzaList.Add (new Pizza(pizzaName));
 		}
-		//sendMail ();
+
+		if (Application.platform == RuntimePlatform.Android) {
+			SendEmailMobile ();
+		}
+		else {
+			SendEmailDesktop ();
+			PizzaListToTxt (pizzaList);
+		}	
+		
         score = 0;
-		PizzaListToTxt (pizzaList);
+
 		newPizza ();
 	}
 	
@@ -180,6 +186,7 @@ public class TheRealGameManager : MonoBehaviour {
 
 	public void newPizza(){
 		currentPizza = pizzaList [UnityEngine.Random.Range (0, pizzaList.Count)];
+		currentPizzaText.text = "Test?";
 		currentPizzaText.text = currentPizza.Name;
 	}
 
@@ -235,7 +242,7 @@ public class TheRealGameManager : MonoBehaviour {
 		return result;
 	}
 
-	public void sendMail(){
+	public void SendEmailDesktop(){
 		currentPizzaText.text = "sendMail()";
 		MailMessage mail = new MailMessage();
 
@@ -250,23 +257,37 @@ public class TheRealGameManager : MonoBehaviour {
 		}
 		
 		mail.Body = output;
-		currentPizzaText.text = "Created the Body";
 		SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");
-		currentPizzaText.text = "new SmtpClient(\"smtp.gmail.com\");";
 		smtpServer.Port = 587;
 		smtpServer.Credentials = new System.Net.NetworkCredential("kevintestmail123@gmail.com", "KevinsTestAccount") as ICredentialsByHost;
-		currentPizzaText.text = "smtpServer.Credentials";
 		smtpServer.EnableSsl = true;
 		ServicePointManager.ServerCertificateValidationCallback = 
 			delegate(object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) 
 		{ return true; };
 		smtpServer.Send(mail);
-		currentPizzaText.text = "smtpServer.Send(mail);";
-		//Debug.Log("success");
+	}
+
+	public void SendEmailMobile ()
+	{
+		string output = "";
+		foreach (Pizza item in pizzaList) {
+			output += item.ToString ();
+			output += System.Environment.NewLine;
+		}
+
+		string email = "kevintestmail123@gmail.com";
+		string subject = MyEscapeURL("Pizza Menu");
+		string body = MyEscapeURL(output);
+		Application.OpenURL("mailto:" + email + "?subject=" + subject + "&body=" + body);
+	}
+
+	string MyEscapeURL (string url)
+	{
+		return WWW.EscapeURL(url).Replace("+","%20");
 	}
 
 	IEnumerator CheckInternet(){ 
-		WWW internet = new WWW("www.google.com"); 
+		WWW internet = new WWW("http://www.google.com"); 
 		yield return internet; 
 		if(internet.error!=null) 
 			isInternet=false; 
