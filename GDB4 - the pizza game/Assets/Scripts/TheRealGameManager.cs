@@ -172,6 +172,7 @@ public class TheRealGameManager : MonoBehaviour {
 
         playerScore.UpdateScore(score);
 		newPizza ();
+        _currentIngredients = new Dictionary<string, int>();
         //currentPizza = new Pizza();
     }
 
