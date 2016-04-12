@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 using System.IO;
 using UnityEngine.UI;
-using System.Net.Mail;
+//using System.Net.Mail;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
@@ -39,14 +39,18 @@ public class TheRealGameManager : MonoBehaviour {
 			pizzaList.Add (new Pizza(pizzaName));
 		}
 
-		if (Application.platform == RuntimePlatform.Android) {
-			SendEmailMobile ();
-		}
-		else {
-			SendEmailDesktop ();
-			PizzaListToTxt (pizzaList);
-		}	
-		currentPizzaText.text = "Game Not Started Yet!";
+        resetCurrentIngridients();
+
+        SendEmailMobile();
+
+        //if (Application.platform == RuntimePlatform.Android) {
+        //	SendEmailMobile ();
+        //}
+        //else {
+        //	SendEmailDesktop ();
+        //		PizzaListToTxt (pizzaList);
+        //}	
+        currentPizzaText.text = "Game Not Started Yet!";
 	}
 	
 	// Update is called once per frame
@@ -63,89 +67,88 @@ public class TheRealGameManager : MonoBehaviour {
         int aantal = 1;
         if (clickedPane.GetComponent<Renderer>().material.mainTexture.name.Contains("doughPizza"))
         {
-            if (_currentIngredients.ContainsKey("dough"))
-            {
-                aantal = _currentIngredients["dough"] + 1;
-                _currentIngredients.Remove("dough");
-            }
+            aantal = _currentIngredients["dough"] + 1;
+            _currentIngredients.Remove("dough");
             _currentIngredients.Add("dough", aantal);
             Debug.Log("Dough: " + _currentIngredients["dough"]);
         }
         else if (clickedPane.GetComponent<Renderer>().material.mainTexture.name.Contains("tomatoPizza"))
         {
-            if (_currentIngredients.ContainsKey("tomato"))
-            {
-                aantal = _currentIngredients["tomato"] + 1;
-                _currentIngredients.Remove("tomato");
-            }
+            aantal = _currentIngredients["tomato"] + 1;
+            _currentIngredients.Remove("tomato");
             _currentIngredients.Add("tomato", aantal);
             Debug.Log("Tomato: " + _currentIngredients["tomato"]);
         }
         else if (clickedPane.GetComponent<Renderer>().material.mainTexture.name.Contains("kaasPizza"))
         {
-            if (_currentIngredients.ContainsKey("cheese"))
-            {
-                aantal = _currentIngredients["cheese"] + 1;
-                _currentIngredients.Remove("cheese");
-            }
+            aantal = _currentIngredients["cheese"] + 1;
+            _currentIngredients.Remove("cheese");
             _currentIngredients.Add("cheese", aantal);
             Debug.Log("Cheese: " + _currentIngredients["cheese"]);
         }
         else if (clickedPane.GetComponent<Renderer>().material.mainTexture.name.Contains("pepperoniPizza"))
         {
-            if (_currentIngredients.ContainsKey("pepperoni"))
-            {
-                aantal = _currentIngredients["pepperoni"] + 1;
-                _currentIngredients.Remove("pepperoni");
-            }
+            aantal = _currentIngredients["pepperoni"] + 1;
+            _currentIngredients.Remove("pepperoni");
             _currentIngredients.Add("pepperoni", aantal);
             Debug.Log("Pepperoni: " + _currentIngredients["pepperoni"]);
         }
         else if (clickedPane.GetComponent<Renderer>().material.mainTexture.name.Contains("hamPizza"))
         {
-            if (_currentIngredients.ContainsKey("ham"))
-            {
-                aantal = _currentIngredients["ham"] + 1;
-                _currentIngredients.Remove("ham");
-            }
+            aantal = _currentIngredients["ham"] + 1;
+            _currentIngredients.Remove("ham");
             _currentIngredients.Add("ham", aantal);
             Debug.Log("Ham: " + _currentIngredients["ham"]);
         }
         else if (clickedPane.GetComponent<Renderer>().material.mainTexture.name.Contains("champignonPizza"))
         {
-            if (_currentIngredients.ContainsKey("champignon"))
-            {
-                aantal = _currentIngredients["champignon"] + 1;
-                _currentIngredients.Remove("champignon");
-            }
+            aantal = _currentIngredients["champignon"] + 1;
+            _currentIngredients.Remove("champignon");
             _currentIngredients.Add("champignon", aantal);
             Debug.Log("Champignon: " + _currentIngredients["champignon"]);
         }
         else if (clickedPane.GetComponent<Renderer>().material.mainTexture.name.Contains("olivesPizza"))
         {
-            if (_currentIngredients.ContainsKey("olive"))
-            {
-                aantal = _currentIngredients["olive"] + 1;
-                _currentIngredients.Remove("olive");
-            }
+            aantal = _currentIngredients["olive"] + 1;
+            _currentIngredients.Remove("olive");
             _currentIngredients.Add("olive", aantal);
             Debug.Log("Olive: " + _currentIngredients["olive"]);
         }
         else if (clickedPane.GetComponent<Renderer>().material.mainTexture.name.Contains("rawchickenPizza"))
         {
-            if (_currentIngredients.ContainsKey("chicken"))
-            {
-                aantal = _currentIngredients["chicken"] + 1;
-                _currentIngredients.Remove("chicken");
-            }
+            aantal = _currentIngredients["chicken"] + 1;
+            _currentIngredients.Remove("chicken");
             _currentIngredients.Add("chicken", aantal);
             Debug.Log("Chicken: " + _currentIngredients["chicken"]);
         }
     }
 
+    public void resetCurrentIngridients()
+    {
+        _currentIngredients.Remove("dough");
+        _currentIngredients.Add("dough", 0);
+        _currentIngredients.Remove("tomato");
+        _currentIngredients.Add("tomato", 0);
+        _currentIngredients.Remove("cheese");
+        _currentIngredients.Add("cheese", 0);
+        _currentIngredients.Remove("pepperoni");
+        _currentIngredients.Add("pepperoni", 0);
+        _currentIngredients.Remove("ham");
+        _currentIngredients.Add("ham", 0);
+        _currentIngredients.Remove("champignon");
+        _currentIngredients.Add("champignon", 0);
+        _currentIngredients.Remove("olive");
+        _currentIngredients.Add("olive", 0);
+        _currentIngredients.Remove("chicken");
+        _currentIngredients.Add("chicken", 0);
+    }
+
     public void servePizza()
     {
+        Debug.Log("KaasBroodje 1" + currentPizza._neededIngredients["Dough"]);
+        Debug.Log("KaasBroodje 1" + _currentIngredients["dough"]);
         int difference = (currentPizza._neededIngredients["Dough"] - _currentIngredients["dough"]);
+        Debug.Log("KaasBroodje 2");
         if (difference < 0) { difference *= -1; }
         score += _currentIngredients["dough"] -= difference * 2;
         difference = (currentPizza._neededIngredients["Tomato"] - _currentIngredients["tomato"]);
@@ -172,7 +175,7 @@ public class TheRealGameManager : MonoBehaviour {
 
         playerScore.UpdateScore(score);
 		newPizza ();
-        _currentIngredients = new Dictionary<string, int>();
+        resetCurrentIngridients();
         //currentPizza = new Pizza();
     }
 
@@ -196,7 +199,7 @@ public class TheRealGameManager : MonoBehaviour {
 		}
 	}
 
-	public void PizzaListToTxt(List<Pizza> pizzaList){
+	/*public void PizzaListToTxt(List<Pizza> pizzaList){
 
 
 		if (!File.Exists (PizzaMenuLocation)) {
@@ -212,7 +215,7 @@ public class TheRealGameManager : MonoBehaviour {
 		foreach (Pizza item in pizzaList) {
 			WriteMenu(item.ToString());
 		}
-	}
+	}*/
 
 	public bool checkIfNameExist(string name){
 		foreach (Pizza item in pizzaList) {
@@ -234,7 +237,7 @@ public class TheRealGameManager : MonoBehaviour {
 		return result;
 	}
 
-	public void SendEmailDesktop(){
+	/*public void SendEmailDesktop(){
 		currentPizzaText.text = "sendMail()";
 		MailMessage mail = new MailMessage();
 
@@ -257,7 +260,7 @@ public class TheRealGameManager : MonoBehaviour {
 			delegate(object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) 
 		{ return true; };
 		smtpServer.Send(mail);
-	}
+	}*/
 
 	public void SendEmailMobile ()
 	{
@@ -279,6 +282,7 @@ public class TheRealGameManager : MonoBehaviour {
 	}
 		
 	public void StartGame(){
+
 		timerTime -= Time.deltaTime;
 		score = 0;
 		newPizza ();

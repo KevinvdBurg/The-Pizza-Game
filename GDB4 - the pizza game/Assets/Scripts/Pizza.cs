@@ -62,9 +62,40 @@ public class Pizza {
 				}
 			}
 		}
-
-
-	}
+        //When the ingredients have been chosen, others will be set to 0
+        if (!_neededIngredients.ContainsKey("Dough"))
+        {
+            _neededIngredients.Add("Dough", 0);
+        }
+        if (!_neededIngredients.ContainsKey("Tomato"))
+        {
+            _neededIngredients.Add("Tomato", 0);
+        }
+        if (!_neededIngredients.ContainsKey("Cheese"))
+        {
+            _neededIngredients.Add("Cheese", 0);
+        }
+        if (!_neededIngredients.ContainsKey("Salami"))
+        {
+            _neededIngredients.Add("Salami", 0);
+        }
+        if (!_neededIngredients.ContainsKey("Ham"))
+        {
+            _neededIngredients.Add("Ham", 0);
+        }
+        if (!_neededIngredients.ContainsKey("Mushroom"))
+        {
+            _neededIngredients.Add("Mushroom", 0);
+        }
+        if (!_neededIngredients.ContainsKey("Olive"))
+        {
+            _neededIngredients.Add("Olive", 0);
+        }
+        if (!_neededIngredients.ContainsKey("Chicken"))
+        {
+            _neededIngredients.Add("Chicken", 0);
+        }
+    }
 	public override string ToString ()
 	{
 		string output = "Name: " + this.Name + " > ";
