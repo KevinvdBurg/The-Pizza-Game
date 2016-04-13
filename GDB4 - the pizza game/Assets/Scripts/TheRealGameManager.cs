@@ -23,11 +23,13 @@ public class TheRealGameManager : MonoBehaviour {
 	public TextMesh TimeText;
 	public bool isInternet = false;
 	public float timerTime;
+	float maxTime;
 	string PizzaMenuLocation = "PizzaMenu.txt";
-
+	bool GameStarted;
 
 	// Use this for initialization
 	void Start () {	
+		maxTime = timerTime;
 		pizzaList = new List<Pizza> ();
 		for (int i = 0; i < 30; i++) {
 			bool AlreadyExist = true;
@@ -59,6 +61,18 @@ public class TheRealGameManager : MonoBehaviour {
 			newPizza ();
 		}
 
+		if (GameStarted) {
+			timerTime -= Time.deltaTime;
+
+			TimeText.text = "Time Left:" + Mathf.Round(timerTime);
+			if (timerTime <= (maxTime % 90)) {
+				TimeText.color = new Color (255, 0, 0);
+			} 
+			if (timerTime <= 0.0f)
+			{
+				GameOver();
+			}
+		}
 	}
 
     public void OnPizzaClick(GameObject clickedPane)
@@ -175,14 +189,14 @@ public class TheRealGameManager : MonoBehaviour {
 
         playerScore.UpdateScore(score);
 		newPizza ();
-        resetCurrentIngridients();
+        
         //currentPizza = new Pizza();
     }
 
 	public void newPizza(){
 		currentPizza = pizzaList [UnityEngine.Random.Range (0, pizzaList.Count)];
-		currentPizzaText.text = "Test?";
 		currentPizzaText.text = currentPizza.Name;
+		resetCurrentIngridients();
 	}
 
 	public string GenRandomPizzaName(){
@@ -237,31 +251,6 @@ public class TheRealGameManager : MonoBehaviour {
 		return result;
 	}
 
-	/*public void SendEmailDesktop(){
-		currentPizzaText.text = "sendMail()";
-		MailMessage mail = new MailMessage();
-
-		mail.From = new MailAddress("kevintestmail123@gmail.com");
-		mail.To.Add("kevintestmail123@gmail.com");
-		mail.Subject = "Pizza Menu";
-
-		string output = "";
-		foreach (Pizza item in pizzaList) {
-			output += item.ToString ();
-			output += System.Environment.NewLine;
-		}
-		
-		mail.Body = output;
-		SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");
-		smtpServer.Port = 587;
-		smtpServer.Credentials = new System.Net.NetworkCredential("kevintestmail123@gmail.com", "KevinsTestAccount") as ICredentialsByHost;
-		smtpServer.EnableSsl = true;
-		ServicePointManager.ServerCertificateValidationCallback = 
-			delegate(object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) 
-		{ return true; };
-		smtpServer.Send(mail);
-	}*/
-
 	public void SendEmailMobile ()
 	{
 		string output = "";
@@ -286,24 +275,28 @@ public class TheRealGameManager : MonoBehaviour {
 		timerTime -= Time.deltaTime;
 		score = 0;
 		newPizza ();
-		StartCoroutine (StartTimer (timerTime));
+		GameStarted = true;
+		//StartCoroutine (StartTimer (timerTime));
 	}
 
 	void GameOver(){
 		currentPizzaText.text = "GameOver! Score: " + score;
+		GameStarted = false;
+		timerTime = maxTime;
 		score = 0;
+		TimeText.color = new Color (0, 0, 0);
 		//Game over Reset all varibales
 	}
-	IEnumerator StartTimer(float time){
-		time -= Time.deltaTime;
-		TimeText.text = "Time Left:" + Mathf.Round(time);
-		if(time < 0)
-		{
-			GameOver ();
-		}
-
-		yield return null;
-
-	}
+//	IEnumerator StartTimer(float time){
+//		time -= Time.deltaTime;
+//		TimeText.text = "Time Left:" + Mathf.Round(time);
+//		if(time < 0)
+//		{
+//			GameOver ();
+//		}
+//
+//		yield return null;
+//
+//	}
 
 }

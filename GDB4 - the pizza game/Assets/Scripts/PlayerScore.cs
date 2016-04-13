@@ -5,7 +5,7 @@ public class PlayerScore : MonoBehaviour
 {
 
 
-    private int score = 0;
+    public int score = 0;
     public GameObject scoreText;
     public PlayerScore instance;
 
