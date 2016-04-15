@@ -45,13 +45,6 @@ public class TheRealGameManager : MonoBehaviour {
 
         SendEmailMobile();
 
-        //if (Application.platform == RuntimePlatform.Android) {
-        //	SendEmailMobile ();
-        //}
-        //else {
-        //	SendEmailDesktop ();
-        //		PizzaListToTxt (pizzaList);
-        //}	
         currentPizzaText.text = "Game Not Started Yet!";
 	}
 	
@@ -213,24 +206,6 @@ public class TheRealGameManager : MonoBehaviour {
 		}
 	}
 
-	/*public void PizzaListToTxt(List<Pizza> pizzaList){
-
-
-		if (!File.Exists (PizzaMenuLocation)) {
-			StreamWriter sr = File.CreateText (PizzaMenuLocation);
-			sr.Close ();
-		} else {
-			using (StreamWriter sr = new StreamWriter(PizzaMenuLocation, false))
-			{
-				sr.WriteLine (" ");
-			}
-		}
-
-		foreach (Pizza item in pizzaList) {
-			WriteMenu(item.ToString());
-		}
-	}*/
-
 	public bool checkIfNameExist(string name){
 		foreach (Pizza item in pizzaList) {
 			if (item.Name == name)
@@ -276,7 +251,6 @@ public class TheRealGameManager : MonoBehaviour {
 		score = 0;
 		newPizza ();
 		GameStarted = true;
-		//StartCoroutine (StartTimer (timerTime));
 	}
 
 	void GameOver(){
@@ -287,16 +261,5 @@ public class TheRealGameManager : MonoBehaviour {
 		TimeText.color = new Color (0, 0, 0);
 		//Game over Reset all varibales
 	}
-//	IEnumerator StartTimer(float time){
-//		time -= Time.deltaTime;
-//		TimeText.text = "Time Left:" + Mathf.Round(time);
-//		if(time < 0)
-//		{
-//			GameOver ();
-//		}
-//
-//		yield return null;
-//
-//	}
 
 }
