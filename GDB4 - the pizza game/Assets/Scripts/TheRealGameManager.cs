@@ -234,7 +234,7 @@ public class TheRealGameManager : MonoBehaviour {
 			output += System.Environment.NewLine;
 		}
 
-		string email = "kevintestmail123@gmail.com";
+		string email = "";
 		string subject = MyEscapeURL("Pizza Menu");
 		string body = MyEscapeURL(output);
 		Application.OpenURL("mailto:" + email + "?subject=" + subject + "&body=" + body);
